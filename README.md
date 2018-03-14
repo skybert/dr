@@ -1,1 +1,1 @@
-# Dr - my DockR commands
+# Dr - my DockeR commands
