@@ -3,8 +3,10 @@
 # by torstein@escenic.com
 
 container_name=$1
+shell=${2-/bin/bash}
+
 docker \
   exec \
   -ti \
   "$(docker ps -qf "name=${container_name}")" \
-  /bin/bash
+  "${shell}"
