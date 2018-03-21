@@ -7,7 +7,7 @@
 Get a shell in a container by name:
 ```shell
 $ drshell redis
-root@36b953823ecf:/data# 
+root@36b953823ecf:/data#
 ```
 
 ### drps
@@ -48,4 +48,4 @@ Please do, fork the repo and create a pull request.
 
 ## Licence
 
-See [LICENCE](LICENCE).
+See [LICENSE](LICENSE).
