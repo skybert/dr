@@ -1,5 +1,13 @@
 # Dr - my DockeR commands
 
+Most docker commands work on the docker IDs. I find this cumbersome,
+so I've written a set of commands that lets you pass the name of the
+container instead.
+
+Normally, only parts of the name is needed, i.e. instead of doing
+`drshell docker_nginx_1` to get a shell on the `docker_nginx_1`
+container, you can just type `drshell nignx`.
+
 ## Examples
 
 ### drshell
