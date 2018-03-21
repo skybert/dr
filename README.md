@@ -2,6 +2,14 @@
 
 ## Examples
 
+### drshell
+
+Get a shell in a container by name:
+```shell
+$ drshell redis
+root@36b953823ecf:/data# 
+```
+
 ### drps
 
 An improved `docker ps` command that include the IP of the containers:
@@ -19,7 +27,7 @@ b148c7c2df3c  consul                          2018-03-21T12:15:30  172.19.0.3   
 
 ### drip
 
-Get the IP of a container by its name.
+Get the IP of a container by name.
 
 ```shell
 $ drip oxauth
@@ -27,7 +35,7 @@ $ drip oxauth
 ```
 
 ### drlog
-Tail the log of a container by its name.
+Tail the log of a container by name.
 
 ```shell
 $ drlogs oxauth
