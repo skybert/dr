@@ -13,3 +13,8 @@ docker volume ls -q |
   while read -r f; do
     docker volume rm "${f}"
   done
+
+docker network ls -q |
+  while read -r f; do
+    docker network rm "${f}"
+  done
