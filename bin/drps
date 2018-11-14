@@ -3,12 +3,25 @@
 # 'docker ps' with more information like IPs of network card(s), based
 # on https://github.com/cben/myenv/blob/master/bin/docker-psi
 
-(
-  printf "%s\n" "CONTAINER ID|IMAGE|CREATED|IP|NAMES"
-  docker ps --quiet | \
-    xargs \
-      --no-run-if-empty \
-      docker inspect \
-      --format='{{printf "%.12s" .Id}}|{{.Config.Image}}|{{printf "%.19s" .State.StartedAt}}|{{range $net, $conf := .NetworkSettings.Networks}}{{$conf.IPAddress}}{{end}}|{{.Name}}'
-) |
-  column -t -s '|'
+if [ "$1" ]; then
+  (
+    printf "%s\n" "CONTAINER ID|IMAGE|CREATED|IP|PORTS|NAMES"
+    docker ps --quiet | \
+      xargs \
+        --no-run-if-empty \
+        docker inspect \
+        --format='{{printf "%.12s" .Id}}|{{.Config.Image}}|{{printf "%.19s" .State.StartedAt}}|{{range $net, $conf := .NetworkSettings.Networks}}{{$conf.IPAddress}} {{end}}|{{.NetworkSettings.Ports}}|{{.Name}}'
+
+  ) |
+    column -t -s '|'
+else
+  (
+    printf "%s\n" "CONTAINER ID|IMAGE|CREATED|IP|NAMES"
+    docker ps --quiet | \
+      xargs \
+        --no-run-if-empty \
+        docker inspect \
+        --format='{{printf "%.12s" .Id}}|{{.Config.Image}}|{{printf "%.19s" .State.StartedAt}}|{{range $net, $conf := .NetworkSettings.Networks}}{{$conf.IPAddress}}{{end}}|{{.Name}}'
+  ) |
+    column -t -s '|'
+fi
